@@ -1,0 +1,29 @@
+ view:- 
+A view is a logical table based on a table or another view.
+a view contains no data of it's own .
+the table on which the view is based is known as base table.
+
+advantage :-
+1)views restrict access to data because the view can display selective columns from the table.
+2)views can be used to make simple queries to retrieve the results of complicated queries.
+3)one view can be used to retrieve data from several tables.
+
+simple view:-
+1)Derives data from only one table.
+2)contains no functions or groupby data.
+3)can perform DML(data manupulation language insert,update,delete) operation
+
+complex view:-
+1)derives data from many table.
+2)contains functions or group by data.
+3)doesnot always allow DML operations.
+
+example:-
+
+1)create view xyz as select empno,ename from emp where deptno=10;
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+1)select CONCAT('Hello', 'World') from dual;
+o/p:-HelloWorld
+
+2)select SUBSTR('HelloWorld',1,5) from dual;
+o/p:-Hello
+
+3)select LENGTH('HelloWorld') from dual;
+o/p:-10
+
+4)select INSTR('HelloWorld', 'W') from dual;
+o/p:-6
+
+5)select LPAD(sal,10,'*')from emp;
+o/p:-******4500
+
+6)select RPAD(sal,10,'*')from emp;
+o/p:-4500******
+
+7)select TRIM('H' FROM 'HelloWorld')from dual;
+o/p:-elloWorld
+
+8)select TRIM('d' FROM 'HelloWorld')from dual;
+o/p:-HelloWorl
+
+arithmatic function:-
+--------------------------
+1)select ROUND(45.926, 2) from dual;
+o/p:-45.93
+
+2)select TRUNC(45.926, 2) from dual;
+o/p:-45.92
+
+3)select mod(1600,300) from dual;
+o/p:-100
+
+4)select abs(-9) from dual;
+o/p:-9
+
+5)select floor(9.555) from dual;
+o/p:-9
+
+6)select ceil(9.555) from dual;
+o/p:-10
+
+7)select cos(0) from dual;
+o/p:-1
+
+8)select tan(0) from dual;
+o/p:-0
