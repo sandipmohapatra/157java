@@ -1,0 +1,17 @@
+index:-an oracle server index is a schema object that can speed up the retrieval of rows by using a pointer.
+Index can be created automatically or explicitly.
+if we donot have index on the column then full table scan accurs.
+
+an index provides direct and fast access to rows in a table.it reduces the disk input/output by using a index path to locate data quickly.
+
+index are logically and physically independent of the table they index.
+means we create or drop it doesnot effect the base table.
+we drop a table the corresponding index is also dropped.
+
+type of index:-
+1)unique index:-the oracle server create automatically this index when you define a column in a table to have primary key or  a unique key constraint.The name of the index will be same as the name given to the constraint.
+
+2)non unique index:-we create a foreign key column index for a join in a query to improve retrieval speed.
+
+
+exaple:- create index xyz on emp(ename);  
