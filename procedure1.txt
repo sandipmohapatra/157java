@@ -1,0 +1,67 @@
+Procedure:- it is a pl/sql code which execute when called but they donot return any value
+------------------------------------------------------------------------------------------------------
+create or replace procedure del_manager is
+begin 
+insert into employee(empid,empname,empage,salary,empaddress) values(&empid,&empname,&empage,&salary,&empaddress);
+delete from emp where job='manager';
+commit;
+end del_manager;
+-------------------------
+begin
+del_manager;
+end;
+------------------------------------------
+create or replace procedure insert_employee   
+(empid IN NUMBER,empname IN VARCHAR2,empage IN NUMBER,salary IN NUMBER,empaddress IN VARCHAR2)    
+is    
+begin    
+insert into user values(empid,empname,empage,salary,empaddress);    
+end;    
+----------------------------------------------------------------
+BEGIN    
+   insert_employee(101,'Rahul',23,45000,'bangalore');  
+ insert_employee(102,'kiran',23,45000,'bangalore');  
+ insert_employee(103,'Manasa',23,45000,'bangalore');  
+  END;    
+
+-----------------------------------------------------------------
+    create or replace procedure testproc(p_str1 in varchar, p_str2 out varchar, p_str3 in out varchar) IS
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('p_str1 = ' || p_str1);
+         DBMS_OUTPUT.PUT_LINE('p_str2 = ' || p_str2);
+          DBMS_OUTPUT.PUT_LINE('p_str3 = ' || p_str3);
+           
+           p_str2 := 'welcome ' || p_str1;
+           p_str3 := 'welcome to ' || p_str3;
+    END;
+    
+    DECLARE
+        S1 VARCHAR(40);
+        S2 VARCHAR(40);
+        S3 VARCHAR(40);
+        
+    BEGIN
+        S1 := 'AMIT';
+        S2 := 'BANGALORE';
+        S3 := 'MPHASIS';
+        
+    testproc(s1,s2,s3);
+        DBMS_OUTPUT.PUT_LINE('----------------------------------------------');
+        DBMS_OUTPUT.PUT_LINE('s1 : ' || s1);
+        DBMS_OUTPUT.PUT_LINE('s2 : ' || s2);
+        DBMS_OUTPUT.PUT_LINE('s3 : ' || s3);
+    END;
+        
+---------------
+
+create or replace procedure add_number(i number default 0,j number default 0,k number default 0) is
+begin
+dbms_output.put_line('result:'||(i+j+k));
+end;
+--------------------------------------------------------------------------------------------------
+begin
+add_number(10,20,30);
+end;
+
+
+

@@ -1,0 +1,155 @@
+set serveroutput on
+
+declare
+x number;
+y number;
+z number;
+begin
+x:=&x;
+y:=&y;
+z:=x+y;
+dbms_output.put_line('the sum is '||z);
+end;
+
+-------------------
+declare 
+  a number;
+begin
+  a := :a;
+dbms_output.put_line('Inputed Number is >> '|| a);
+end;
+--------------------------------------------------
+declare 
+  a number;
+b number;
+c number;
+begin
+  a := :a;
+b:= :b;
+c:=a+b;
+dbms_output.put_line('the sum is '|| c);
+end;
+------------------------------------------------------------------------
+
+declare
+a number:=10;
+b number:=20;
+c number;
+begin
+c:=a+b;
+dbms_output.put_line('the result is:'||c);
+end;
+
+-----------------------------------
+declare
+a number:=10;
+b number:=20;
+begin
+if(a>b)then
+dbms_output.put_line('the geatest is:'||a);
+else
+dbms_output.put_line('the geatest is:'||b);
+end if;
+end;
+
+
+
+-------------------------------------------------
+declare
+a number:=10;
+b number:=20;
+c number:=30;
+begin
+if(a>b and a>c) then
+dbms_output.put_line('the geatest is:'||a);
+elsif (b>a and b>c) then
+dbms_output.put_line('the geatest is:'||b);
+else
+dbms_output.put_line('the geatest is:'||c);
+end if;
+end;
+------------------------------------------------
+
+
+
+
+declare 
+i number;
+begin
+for i in 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+------------------------------------
+declare 
+i number;
+begin
+for i in reverse 10..1 loop
+dbms_output.put_line(i);
+end loop;
+end;
+
+
+
+
+
+
+-----------------------------
+declare 
+i number;
+j number;
+c number;
+k number:=5;
+begin
+for i in 1..5 loop
+for j in 1..5 loop
+dbms_output.put_line(k||' * '||j||' = '||(k*j));
+end loop;
+end loop;
+end;
+
+--------------------------------------------------------------------
+create table circle(radius number,area number);
+--------------------------------------------------------------------
+declare
+pi constant number(4,2):=3.14;
+radius number;
+area number;
+begin
+for radius in 5..10 loop
+area:=pi*power(radius,2);
+insert into circle values(radius,area);
+end loop;
+end;
+
+select * from circle;
+----------------------------------------------
+DECLARE  
+name     VARCHAR(25) NOT NULL := 'Smith';  
+surname  name%TYPE := 'Jones';
+ BEGIN  
+DBMS_OUTPUT.PUT_LINE('name=' || name);
+DBMS_OUTPUT.PUT_LINE('surname=' || surname); 
+END; 
+---------------------------------------------------
+case example :-
+DECLARE  
+   grade char(1) := 'A';  
+BEGIN  
+   CASE grade  
+      when 'A' then dbms_output.put_line('Excellent');  
+      when 'B' then dbms_output.put_line('Very good');  
+      when 'C' then dbms_output.put_line('Good');  
+      when 'D' then dbms_output.put_line('Average');  
+      when 'F' then dbms_output.put_line('Passed with Grace');  
+      else dbms_output.put_line('Failed');  
+   END CASE;  
+END;  
+-----------------------------------------------------------
+
+
+
+
+
+
+

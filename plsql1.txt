@@ -1,0 +1,315 @@
+declare 
+  a number;
+begin
+  a := :a;
+dbms_output.put_line('Inputed Number is >> '|| a);
+end;
+-------------------------------------------------------------------------------------
+
+http://psoug.org/reference/control_struct.html
+
+PLSQL stands for "Procedural Language extensions to SQL", and can be used in Oracle databases. 
+PL SQL is closely integrated into the SQL language. 
+PL/SQL also implements basic exception handling.  
+The pl/sql block contains the following section:--
+
+-----The DECLARE section.
+-----The Master BEGIN and END section that contains the EXCEPTION section.
+
+The declare section contains declaration of memory variables, constants etc. The begin section contains sql executable statements and pl/sql executable statements. The exception section contains code to handle errors that may arise during the execution of the code block. The end declares the end of pl/sql block.
+
+declare
+a number:=10;
+b number:=20;
+c number;
+begin
+c:=a+b;
+dbms_output.put_line('the result is:'||c);
+end;
+
+-----------------------------------
+declare
+a number:=10;
+b number:=20;
+begin
+if(a>b)then
+dbms_output.put_line('the greatest is:'||a);
+else
+dbms_output.put_line('the greatest is:'||b);
+end if;
+end;
+-------------------------------------------------
+declare
+a number:=10;
+b number:=20;
+c number:=30;
+begin
+if(a>b and a>c) then
+dbms_output.put_line('the geatest is:'||a);
+elsif (b>a and b>c) then
+dbms_output.put_line('the geatest is:'||b);
+else
+dbms_output.put_line('the geatest is:'||c);
+end if;
+end;
+------------------------------------------------
+Whenever you start Oracle SQL (PL/SQL) at that time you must have to write the "SET Serveroutput ON" command.
+
+PL/SQL program execution into Oracle engine so we always required to get serveroutput result and display into the screen otherwise result can't be display.
+
+Declare
+a number;
+b number;
+c number;
+Begin
+dbms_output.put_line('Enter a:');
+a:=&a;
+dbms_output.put_line('Enter b:');
+b:=&b;
+dbms_output.put_line('Enter c:');
+c:=&c;
+if (a>b) and (a>c) then
+dbms_output.put_line('A is greatest');
+elsif (b>a) and (b>c) then
+dbms_output.put_line('B is greatest');
+else
+dbms_output.put_line('C is greatest');
+end if;
+End;
+-----------------------------------------------------
+set serveroutput on
+
+declare
+mark number;
+begin
+  mark :=&mark;
+  if (mark between 85 and 100)then
+    dbms_output.put_line('mark is A ');
+  elsif (mark between 50 and 65) then
+    dbms_output.put_line('mark is D ');
+  elsif (mark between 66 and 75) then
+    dbms_output.put_line('mark is C ');
+  elsif (mark between 76 and 84) then
+    dbms_output.put_line('mark is B');
+  else 
+    dbms_output.put_line('mark is F');
+  end if;
+end;
+-------------------------------------------------------------
+declare
+basic number;
+da number;
+hra number;
+pf number;
+netsalary number;
+begin
+basic:=&basic;
+
+da:=basic * (41/100);
+hra:=basic * (15/100);
+
+if (basic < 3000)
+then
+pf:=basic * (5/100);
+elsif (basic >= 3000 and basic <= 5000)
+then
+pf:=basic * (7/100);
+elsif (basic >= 5000 and basic <= 8000)
+then
+pf:=basic * (8/100);
+else
+pf:=basic * (10/100);
+end if;
+netsalary:=basic + da + hra -pf;
+dbms_output.put_line('Providend Fund : ' || pf);
+dbms_output.put_line('Net salary : ' || netsalary);
+end;
+--------------------------------
+declare 
+i number;
+begin
+for i in 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+-------------------------------------------------------------------------------------
+DECLARE  
+i NUMBER := 1;  
+BEGIN  
+LOOP  
+EXIT WHEN i>10;  
+DBMS_OUTPUT.PUT_LINE(i);  
+i := i+1;  
+END LOOP;  
+END;  
+
+
+
+
+--------------------------------------------
+SUM OF 100 NUMBERS
+
+Declare
+a number;
+s1 number default 0;
+Begin
+a:=1;
+loop
+s1:=s1+a;
+exit when (a=100);
+a:=a+1;
+end loop;
+dbms_output.put_line('Sum between 1 to 100 is '||s1);
+End;
+
+-----------------------------
+Sum of odd numbers 1 to 100
+declare
+n number;
+endvalue number;
+sum1 number default 0;
+begin
+endvalue:=100;
+n:=1;
+while (n < endvalue)
+loop
+sum1:=sum1+n;
+n:=n+2;
+end loop;
+dbms_output.put_line('Sum of odd numbers between 1 and ' || endvalue || ' is ' || sum1);
+end;
+9446326503
+---------------------------------------
+while loop to display 1 to 10
+----------------------------------------
+declare
+n number;
+begin
+n:=1;
+while (n < 10)
+loop
+dbms_output.put_line(n);
+n:=n+1;
+end loop;
+end;
+-----------------------------------------
+declare
+n number;
+s number default 0;
+begin
+n:=1;
+while (n < 10)
+loop
+s:=s+n;
+n:=n+2;
+end loop;
+dbms_output.put_line(s);
+end;
+
+
+-----------------------------------
+Find the Sum of odd numbers 1 to 100
+
+
+declare 
+i number;
+j number;
+begin
+for i in 1..10 loop
+for j in 1..10 loop
+dbms_output.put_line(i*j||' ');
+end loop;
+dbms_output.put_line('*************************');
+end loop;
+end;
+------------------------------------
+Declare
+pi constant number(4,2) := 3.14;
+radius number(5);
+area number(14,2);
+Begin
+radius := 3;
+While radius <=7
+Loop
+area := pi* power(radius,2);
+Insert into areas values (radius, area);
+radius:= radius+1;
+end loop;
+end;
+---------------------------------------------------------------------------
+create table areas(radius number,area number);
+
+
+select * from areas;
+
+-----------------------------
+declare 
+i number;
+j number;
+k number:=5;
+begin
+for i in 1..5 loop
+for j in 1..5 loop
+dbms_output.put_line(k||' * '||j||' = '||(k*j));
+end loop;
+end loop;
+end;
+----------------------------------------
+reverse a number
+Declare
+given_number varchar(5) := '5639';
+str_length number(2);
+inverted_number varchar(5);
+
+Begin
+str_length := length(given_number);
+For cntr in reverse 1..str_length
+loop
+inverted_number := inverted_number || substr(given_number, cntr, 1);
+end loop;
+dbms_output.put_line('The Given no is ' || given_number);
+dbms_output.put_line('The inverted number is ' || inverted_number);
+end;
+---------------------------------------------------
+
+
+create table emp (ename varchar2(25),sal number,dept number);
+insert into emp values('smith',9000,20);
+------------------------------------------------------
+declare
+s1 emp.sal %type;
+begin
+select sal into s1 from emp
+where ename = 'smith';
+if(s1 < 10000)
+then
+raise_application_error(-20002,'smith is not earning enough');
+end if;
+update emp set sal=sal + 5000
+where ename='smith';
+end;
+
+
+
+
+
+---------------------------------------------------------------
+DECLARE
+e_rec emp%ROWTYPE;
+e1 EXCEPTION;
+sal1 emp.sal%TYPE;
+BEGIN
+SELECT sal INTO sal1 FROM emp WHERE dept = 30 AND ename = 'John';
+IF sal1 < 5000 THEN
+RAISE e1;
+sal1 := 8500;
+UPDATE emp SET sal = sal1 WHERE dept = 30 AND ename = 'John';
+END IF;
+EXCEPTION
+WHEN no_data_found THEN
+RAISE_APPLICATION_ERROR (-20001, 'John is not there.');
+WHEN e1 THEN
+RAISE_APPLICATION_ERROR (-20002, 'Less Salary.');
+END;
+
+------------------------------------------------------------------------------
