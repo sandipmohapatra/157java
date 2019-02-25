@@ -1,0 +1,102 @@
+Trigger :-
+Triggers are stored programs, which are automatically executed or fired when some event occurs.
+
+Triggers are written to be executed in response to any of the following events.
+
+A database manipulation (DML) statement (DELETE, INSERT, or UPDATE).
+A database definition (DDL) statement (CREATE, ALTER, or DROP).
+
+Trigger Timing: BEFORE, AFTER, INSTEAD OF
+Trigger Event: INSERT,UPDATE,DELETE
+Trigger Type: Row
+Row: the trigger body executes once for each row affected by the triggering event.  
+
+Ex:
+CREATE OR REPLACE TRIGGER t1 
+BEFORE INSERT ON ibmemp 
+BEGIN
+IF(TO_CHAR(SYSDATE,'DY')IN('SAT','SUN')) OR 
+(TO_CHAR(SYSDATE,'HH24:MI') NOT BETWEEN '08' AND '15')
+THEN RAISE_APPLICATION_ERROR(-20500,'You may insert into employees table only during business hours');
+END IF;
+END;
+ 
+insert into IBMEMP values(1009,'Vikram','ProjtLead');
+
+------------------------------------------------------------
+
+
+CREATE OR REPLACE TRIGGER display_salary_changes  
+BEFORE DELETE OR INSERT OR UPDATE ON customers  
+FOR EACH ROW  
+WHEN (NEW.ID > 0)  
+DECLARE  
+   sal_diff number;  
+BEGIN  
+   sal_diff := :NEW.salary  - :OLD.salary;  
+   dbms_output.put_line('Old salary: ' || :OLD.salary);  
+   dbms_output.put_line('New salary: ' || :NEW.salary);  
+   dbms_output.put_line('Salary difference: ' || sal_diff);  
+END;  
+/  
+------------------------------------------------------------------------
+create table CUSTOMERS(ID number,NAME varchar2(30),AGE number,ADDRESS varchar2(30),SALARY number)
+-------------------------------------------------------------------------------------
+insert into customers values(102,'kiran',32,'bangalore',4500);
+-------------------------------------------------------------------------
+DECLARE   
+   total_rows number(2);  
+BEGIN  
+   UPDATE  customers  
+   SET salary = salary + 5000;  
+   IF sql%notfound THEN  
+      dbms_output.put_line('no customers updated');  
+   ELSIF sql%found THEN  
+      total_rows := sql%rowcount;  
+      dbms_output.put_line( total_rows || ' customers updated ');  
+   END IF;   
+END;  
+/  
+
+---------------------------------------------------------------
+
+
+
+Ex:
+CREATE OR REPLACE TRIGGER t11
+BEFORE INSERT OR UPDATE OR DELETE ON ibmemp 
+BEGIN
+IF(TO_CHAR(SYSDATE,'DY')IN('SAT','SUN')) OR 
+(TO_CHAR(SYSDATE,'HH24:MI') NOT BETWEEN '08' AND '15')
+THEN
+IF DELETING THEN
+RAISE_APPLICATION_ERROR(-20502,'You may delete from employees table only during business hours');
+ELSIF INSERTING THEN
+RAISE_APPLICATION_ERROR(-20500,'You may insert into employees table only during business hours');
+ELSIF UPDATING ('salary') THEN
+RAISE_APPLICATION_ERROR(-20503,'You may update into employees table only during business hours');
+ELSE
+RAISE_APPLICATION_ERROR(-20504,'You may update into employees table only during normal hours');
+END IF;
+END IF;
+END;
+
+update wiproemp set salary=1000 where empid=1003;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
