@@ -1,0 +1,28 @@
+CREATE SEQUENCE "CUS_SEQ"
+START WITH 100
+INCREMENT BY 1
+NOCACHE
+NOCYCLE
+-----------------------------------------------------------------------------
+
+create or replace function "REGISTERFUNCTIONCUSTOMER"
+(
+name IN VARCHAR2,
+dob IN DATE,
+contact IN NUMBER,
+city IN VARCHAR2)
+return VARCHAR2
+is
+cusid varchar2(10);
+begin
+SELECT 'CUS' || SUBSTR(NAME, -2,2)||
+SUBSTR(DOB,-2,2) || CUS_SEQ.NEXTVAL INTO CUSID FROM DUAL;
+return cusid;
+end;
+--------------------------------------------------------------------------------
+declare
+k varchar2(60);
+begin
+k:=REGISTERFUNCTIONCUSTOMER('sandip','01-jan-2011',1234,'bang');
+dbms_output.put_line('result:'||k);
+end;
