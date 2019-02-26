@@ -1,0 +1,63 @@
+//constructor  example :- default and parameterized
+//it is a method which the same name as that of the class.It doesnot have any return type.
+//it is execued when a new object is created.
+package mphasis.java;
+import java.util.*;
+public class First
+{
+	int empno;//global variable
+	String name,address;
+	public First(int empno, String name, String address) //local variable
+	{
+		this.empno = empno;//this is used when both global and local variable are same
+		this.name = name;
+		this.address = address;
+	}
+public First()
+{
+	System.out.println("default constructor");
+}
+public String toString() {
+	return "First [empno=" + empno + ", name=" + name + ", address=" + address + "]";
+}
+
+int sum(int a,int b)
+{
+return a+b;	
+}
+
+float sum(float a,float b)
+{
+	return a+b;
+}
+double sum(double a,double b)
+{
+	return a+b;
+}
+
+}
+	
+
+---------------------------------------------------
+package mphasis.java;
+
+class Second
+{
+	public static void main(String[] args)
+	{
+	First ob=new First();
+	First ob1=new First(101,"sandip","Bangalore");
+	First ob2=new First(102,"chinmaya","Bangalore");
+	First ob3=new First(103,"puspa","Bangalore");
+	System.out.println(ob.sum(4, 5));
+	System.out.println(ob.sum(4.3, 5.3));
+	System.out.println(ob.sum(43.3f, 5.45f));
+				System.out.println(ob1);
+		System.out.println(ob2);
+		System.out.println(ob3);
+				System.out.println(ob);
+		}}
+-----------------------------------------------------
+
+
+
