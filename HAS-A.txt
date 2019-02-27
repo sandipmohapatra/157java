@@ -1,0 +1,82 @@
+//Has-A relationship
+
+package mphasis.java;
+public class student
+{
+private int rollno;
+private String name,address;
+private marks mark;
+public int getRollno() {
+	return rollno;
+}
+public void setRollno(int rollno) {
+	this.rollno = rollno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public marks getMark() {
+	return mark;
+}
+public void setMark(marks mark) {
+	this.mark = mark;
+}}
+
+--------------------------------------------------------------------------
+package mphasis.java;
+public class marks 
+{
+	private int phy,chem,bio;
+
+	public int getPhy() {
+		return phy;
+	}
+
+	public void setPhy(int phy) {
+		this.phy = phy;
+	}
+
+	public int getChem() {
+		return chem;
+	}
+
+	public void setChem(int chem) {
+		this.chem = chem;
+	}
+
+	public int getBio() {
+		return bio;
+	}
+
+	public void setBio(int bio) {
+		this.bio = bio;
+	}
+
+	public String toString() {
+		return "marks [phy=" + phy + ", chem=" + chem + ", bio=" + bio + "]";
+	}}
+	
+-------------------------------------------------------------------------
+package mphasis.java;
+
+public class main 
+{
+public static void main(String[] args) 
+{
+marks mk=new marks();
+mk.setPhy(67);mk.setChem(78);mk.setBio(76);
+student st=new student();
+st.setRollno(101);st.setName("sandip");st.setAddress("bangalore");st.setMark(mk);
+System.out.println(st.getRollno()+"  "+st.getName()+"  "+st.getAddress()+"  "+st.getMark());
+}
+}
+------------------------------------------------------------
