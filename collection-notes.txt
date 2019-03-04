@@ -1,0 +1,52 @@
+Collection framework
+-----------------------------------------
+Collections in java is a framework that provides an architecture to store and manipulate the group of objects.
+
+All the operations that you perform on a data such as searching, sorting, insertion, manipulation, deletion etc. can be performed by Java Collections. 
+
+Java Collection simply means a single unit of objects. Java Collection framework provides many interfaces (Set, List, Queue, Deque) and classes (ArrayList, Vector, LinkedList,HashSet,LinkedHashSet, TreeSet etc).
+
+What is Collection in java
+Collection represents a single unit of objects i.e. a group. 
+---------------------------------------------------
+array :-  int a[]=new int[5];//array size is assigned
+but in collection the size is dynamic.it expands as we enter the elements....
+1)set(interface):-(classes)TreeSet,HashSet,LinkedHashSet
+2)list (interface):-(classes)LinkedList,ArrayList,Vector,Stack
+3)map(interface):-(classes)HashTable,HashMap
+
+1.set(interface)->
+Does not allow duplicate value.
+HashSet,LinkedHashSet,TreeSet(classes).
+a.Hashset->Display elements in random order.
+b.LinkedHashSet ->it displays in the same order.
+c.TreeSet ->It display in the sorted order.
+
+2.List->
+It allows duplicate value.
+Stack,ArrayList,Linkedlist,Vector
+Stack:FILO .the last element will be arr[0].
+Linked List:it displays in same order.
+-----------------------------
+list iterator is used to view data forward and backward
+-----------------------------------------------------------------------------------------
+3.Map->
+HashMap:-we enter Key and value pair
+HashTable:-we enter Key and value pair
+
+*The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits nulls. 
+(HashMap allows null values as key and value whereas Hashtable doesnt allow). 
+HashMap does not guarantee that the order of the map will remain constant every time. 
+HashMap is unsynchronized and Hashtable is synchronized.
+
+Key-value
+key should be unique- but value can be duplicate
+-----------------------------------------------------------------------------------------
+ note:Iterator,ListIterator and enumeration are interfaces which contains the set of methods. with the help of these methods we can retrieve objects from the collection of classes.
+-------------------------------------
+Iterator:three methods:hasNext();next();remove();
+----------------------------------------------------------------------------------------
+Vector is synchronized whereas arraylist is not.
+---------------------------------------------------------------------------------------
+
+
