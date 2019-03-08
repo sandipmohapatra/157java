@@ -1,0 +1,78 @@
+Thread :-
+--------
+The thread is a sort of execution of instruction 
+In a program it start from public static void main(String arg[])
+Statement start executing one after the other.
+
+MultiThread :-
+-------------------
+In an application that is able to manage and coordinate multiple tasks simultaneously is called concurrent, multithread application.
+Multithreaded applications make use of thread switching and scheduling that allow 
+multiple threads to make use of system resources.
+To create a multithread application we have to implement runnable interface or extends Thread class.
+In runnable interface we have one abstract method ->run()
+In Thread class we have different methods.
+
+Life cycle of Thread :-
+-------------------------
+new born thread,
+start,
+runnable(choose of thread),
+running,
+block/wait/sleep,
+dead
+
+methods of Thread:-
+1)getName():-Obtain the thread name.
+
+2)isAlive():- check if a thread is still running.
+
+3)run() :-Entry point for the thread.
+
+4)start():-Start a thread by calling the run method.
+
+5)yield():-this method pauses the currently executing thread temporarily for giving chance to the remaining waiting threads of same priority to execute. if there is no 
+waiting thread or all the waiting thread have a lower
+priority then the same thread will continue its execution.
+
+6)join():-if any executing thread t1 calls join() on t2 example:- t2.join();
+then immediately t1 enter into waiting state until t2 completes its execution.
+
+7)sleep():-Based on our requirement we can make a thread to be in sleeping state 
+for a specified period of time.
+
+8)setPriority():-To change the priority of the thread.
+
+9)getPriority() :-To get the thread priority.
+MIN_PRIORITY=1 to 4
+NORM_PRIORITY=5
+MAX_PRIORITY=6 to 10
+
+10)Daemon Thread() :-It is a low priority thread which run in the background doing the garbage collection operation .
+
+11)wait() :-Thread will go to wait until some other thread doesnot notify.
+
+12)notify() :- Wakes up a thread that called wait() on some thread. 
+
+13)notifyAll() :-wakes up all the thread that called wait()on some object.
+
+Synchronization:-
+--------------------
+When two or more threads need access to a shared resource,  need some way to 
+ensure that the resource will be used by only one thread at a time. The process by 
+which it is achieved is called synchronization.
+
+DeadLock:-
+-------------
+When two threads are waiting each other and cannot procced the program is said to 
+be deadlock.
+
+
+
+
+
+
+
+
+
+
