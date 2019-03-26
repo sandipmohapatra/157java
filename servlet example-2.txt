@@ -1,0 +1,133 @@
+<html>
+<body bgcolor=cyan>
+<h1><center>Employee Registration page</center></h1><hr>
+<form action="second" method="get">
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20></tr>
+<tr><td>Enter your password<td><input type=password name=t2 size=20></tr>
+<tr><td>Enter your address<td><input type=text name=t3 size=20></tr>
+<tr><td>Enter your email<td><input type=text name=t4 size=20></tr>
+<tr><td>Enter your phone no<td><input type=text name=t5 size=20></tr>
+<tr><td><td><input type=submit value=Insert name=b1></tr>
+</table>
+</form> 
+</body>
+</html>
+
+-----------------------------------------------------------
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/second")
+public class second extends HttpServlet
+{
+public void init()
+{
+	System.out.println("init");
+}
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{	
+		PrintWriter pw=res.getWriter();//to print response on the browser
+		res.setContentType("text/html");
+		String a=req.getParameter("t1");
+		String b=req.getParameter("t2");
+		String c=req.getParameter("t3");
+		String d=req.getParameter("t4");
+		String e=req.getParameter("t5");
+		String f=req.getParameter("b1");
+		pw.println("The name is "+a);
+		pw.println("The password is "+b);
+		pw.println("The address is "+c);
+		pw.println("The email is "+d);
+		pw.println("The phone no is "+e);
+try
+{
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con = DriverManager.getConnection
+			("jdbc:oracle:thin:@localhost:1521:xe", "system", "1234");
+	
+	PreparedStatement st =con.prepareStatement("insert into employee values(?,?,?,?,?)");
+	st.setString(1, a);st.setString(2, b);st.setString(3,c);st.setString(4, d);st.setString(5, e);
+	st.execute();
+	pw.print("row inserted");
+	 res.sendRedirect("login.html");
+}
+catch(Exception ae)
+{
+	ae.printStackTrace();
+}
+
+
+			}
+	public void destroy()
+	{
+		System.out.println("destroy");
+	}}
+
+------------------------------------
+<html>
+<body bgcolor=cyan>
+<form action=login method=get>
+<h1><center>Login Page</center></h1><hr>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20></tr>
+<tr><td>Enter your password<td><input type=password name=t2 size=20></tr>
+<tr><td><td><input type=submit value=Login></tr>
+</table>
+</form>
+</body>
+</html>
+
+-------------------------------
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/login")
+public class login extends HttpServlet
+{
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, 
+	IOException
+	{	
+		PrintWriter pw=res.getWriter();//to print response on the browser
+		res.setContentType("text/html");
+		String a=req.getParameter("t1");
+		String b=req.getParameter("t2");
+		try
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection
+					("jdbc:oracle:thin:@localhost:1521:xe", "system", "1234");
+			PreparedStatement st =con.prepareStatement
+					("select * from employee where name=? and password=?");
+			st.setString(1, a);st.setString(2, b);
+			ResultSet rs=st.executeQuery();
+			while(rs.next())
+			{
+				res.sendRedirect("success.html");
+			}
+			res.sendRedirect("login.html");
+	}
+		catch(Exception ae)
+		{
+	ae.printStackTrace();		
+		}
+}}
+
+----------------------------------------------
+<html>
+<body>
+<h1>Successfully login .Savin comming tomorrow...</h1>
+</body>
+</html>
+
+----------------------------------------------
+<h1>Failure row not inserted</h1>
+----------------------------------------------------------------
