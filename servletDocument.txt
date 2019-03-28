@@ -1,0 +1,185 @@
+Servlet API
+------------------------
+The javax.servlet and javax.servlet.http packages represent interfaces and classes for servlet api.
+Interfaces in javax.servlet package
+Servlet
+ServletRequest
+ServletResponse
+RequestDispatcher
+ServletConfig
+ServletContext
+SingleThreadModel
+Filter
+FilterConfig
+FilterChain
+ServletRequestListener
+ServletRequestAttributeListener
+ServletContextListener
+ServletContextAttributeListener
+------------------------------------------------------------------------------------------
+Classes in javax.servlet package
+There are many classes in javax.servlet package. They are as follows:
+GenericServlet
+ServletInputStream
+ServletOutputStream
+ServletRequestWrapper
+ServletResponseWrapper
+ServletRequestEvent
+ServletContextEvent
+ServletRequestAttributeEvent
+ServletContextAttributeEvent
+ServletException
+
+--------------------------------------------------------------------------------
+There are many interfaces in javax.servlet.http package. They are as follows:
+
+HttpServletRequest
+HttpServletResponse
+HttpSession
+HttpSessionListener
+HttpSessionAttributeListener
+HttpSessionBindingListener
+HttpSessionActivationListener
+
+Classes in javax.servlet.http package
+---------------------------------------------------------------------------------
+
+There are many classes in javax.servlet.http package. They are as follows:
+
+HttpServlet
+Cookie
+HttpServletRequestWrapper
+HttpServletResponseWrapper
+HttpSessionEvent
+
+--------------------------------------------------------------------------
+
+SERVLET
+-----------------
+1)A servlet is a server side component.A servlet is a java programming language class used to extend the capabilities of servers that host application accessed via a request-response programming model.
+2)servlet are durable object they remain in memory and specially instructed to be destroyed .servlet will be loaded on the address space of webserver.
+
+What is servlet Container?
+The servlet container is a part of webserver or application server that provide the network service over which request and response.A servlet container also contains and manages servlet through their life cycle.
+A servlet container can also be built into a host web server and installed as an add-on component to webserver.
+
+Types of servlets:-
+------------------------
+1)generic servlet are protocal independent.
+2)Http servlet are protocal specific they can be invoke only with the http protocol.
+
+when implementing a generic service we must extend GenericServlet class which provides the java servlet api.
+
+when implementing a http service we must extends HttpServlet class which provides methods such as doGet and doPost.
+
+two packages required to build servlet
+1)javax.servlet
+2)javax.servlet.http
+
+Life cycle of servlet:-
+----------------------------
+1)init():-server invokes init() when servlet is first loaded into the webserver memory.This method is used to initialize new servlet instance.Return type is void.
+
+2)getServletConfig():- Return type is servlet config.
+
+3)service():-To activate the servlet instance to handle the client request.
+
+4)getServletInfo():-Return String.
+
+5)destroy():-It is called by the webserver to destroy the existing servlet instance,or clean up any resource the servlet is consuming.
+
+
+
+What is servletContext?
+Servlet context is a part of javax.servlet.*;
+Servlet context is also called as application object.
+Servlet context is used to obtain the information about environment on which servlet is running.
+For every web-application the web-container needs the deployment descripter .if there is no error the web Container will create servletContext object for the application.There may be multiple servlet context object inside a web Container.
+
+Servlet context is one per one web application .To communicate with servlet Conatiner we use ServletContext object.
+
+Methods inside ServletContext interface are
+1)String getInitParameter(String name)
+2)void setAttribute(String name)
+3)Object getAttribute()
+
+In servlet application setAttribute() method is used to create java object.If any object previously present it overrides that object.
+To get the object stored in the request object we use request.getAttribute();
+Request.removeAttribute() is use to remove attribute from request Object.
+HTTP Servlet:-
+-----------------------
+1)SendRedirect() :-we can redirect the browser to a resource part of the same application.
+we can redirect another web application running through the same web container.
+2)RequestDispatcher :-
+it is an interface inside javax.servlet.*;
+it contains two methods :-
+1)forward(ServletRequest req,ServletResponse res)
+2)include(ServletRequest req,ServletResponse res)
+RequestDispatcher is to forward the request to other servlet or include the output of another servlet as a part of the response.
+To build a web application to be stateful that can remember the state of the client we use 
+1)hidden field 2)cookies 3)session object 4)url rewritting
+
+
+
+
+
+Cookies :-
+cookies is a small amount of information set by the server on the client machine.
+
+It is useful for session tracking for each client request a cookies can provide client session id.
+
+getSession(true) :-It creates a new session and set the value from request object.
+getSession(false):-The web container search for the old session object.
+
+servlets are multithreaded for each client request a separate thread will start.
+
+Difference between GET and POST?
+get and post are used to process the request of a client .get method is a part of url.so we can send less amount of data through get.the amount of information limited is 240-255 character.
+But using post we can post larger amount of data through hidden field.
+ 
+Session are more secure and fast because they are stored at server side.
+Session has to be used internally with cookies or urlrewritting to maintain session id.
+
+
+Servlet Filters:-
+--------------------
+1)init() :-calls the filter into service and sets the filter's configuration object.
+2)doFilter():- performs the filtering task.
+3)getFilterConfig():- Return the filter's configuration object.
+4)destroy():-Removes a filter from service.
+
+use of filter:-
+---------------
+1)securing application
+2)help to safe guard the data.
+
+Servlet Listener :-
+--------------------------
+It is a interface
+There are 2 types :-
+1)ServletContextListener
+It is executed once the application is deployed in the application server.
+2)HttpSessionListener
+It is very useful in maintaining data available throughout the life cycle of web application until it is invalid or closed.
+Uses:-
+------
+1)to keep the track of no of concurrent clients using a web application.
+2)database need to be loaded on startup and saved while shut down.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,110 @@
+1)The code for JSP is small as compared to servlet.
+2)in jsp the html code will be separate and the JSP code will be separate.
+3)The jsp code is converted to servlet when it runs internally.
+4)in jsp we have jsp action tags and implicit objects.
+5)jsp will take more time than servlet.
+6)there are 4 scopes:- 1)request 2)session 3)response 4)Application
+
+jsp life cycle :-
+------------------------
+1)jspInit()---Initialization
+2)_jspService()--execution
+3)jspDestroy()--clean up
+in this jsp is 1)compilation 2)Initialization 3)execution 4)clean up
+
+---------------------------------------------- 
+JAVA SERVER PAGES
+----------------------------------------------
+it is classified into 
+1)directives
+2)scripting elements
+3)standard action
+4)declaration tag<%!int a=10%>
+5)expression tag <%=sum%>
+6)comment tag <!-- -->
+
+Directives:-
+---------------
+Jsp directives are messages for jsp engine.they donot produce output.they tell the engine what to do with rest of the jsp page.it is enclosed with <%@-------%> tag
+the three primary directives are:-
+1)page 
+2)include
+3)custom tag libraries
+
+1)page directive:-
+Found at the top of the jsp page.there are 11 attributes in this directive.
+
+1)info :-<%@ page info="this is a welcome page"%>
+to add summary about the page.
+
+2)language:-<%@ page language="java"%>
+to specify scripting langauge used in the page
+
+3)content type:-<%@ page contentType="text/html"%>
+this is used to indicate MIME type
+
+4)Import :-<%@ page import ="java.util.Date"%>
+it is used to extend java classes.
+
+5)Session :-<%@ page session="false"%>
+It is used to indicate JSP page participates in session management.
+
+6)Buffer :-<%@ page buffer="12kb"%>
+to control buffered output for a jsp page.
+
+7)AutoFlush :-<%@ page autoFlush="true"%>
+It means the output will automatically flush.
+
+8)isThreadSafe :-<%@ page isThreadSafe="false"%>
+it is capable to responding multiple requests.
+
+9)Error Page :-<%@ page errorPage="error.jsp"%>
+It is used to display an alternate page if error occurs.
+
+10)isErrorPage :-<%@page isErrorPage="true"%>
+It is a common jsp page for error.
+
+11)extends :-<%@page extends="com.student.result"%>
+it is used for super class used by jsp container used mainly for custom tag libraries.
+
+Include Directives:-
+-----------------------------
+It lets us to include files at the time the jsp page is translated into servlet.
+it treats the contents of the file to be included as if it were part of the original page.It include resources at runtime.
+<%@ include file="include.jsp"%>
+
+Custom tag libraries :-
+---------------------------------
+it is also called jsp tag extensions.It provides a way of encapsulating reusable functionality on jsp page.It has ability to generate dynamic content by using java code.
+
+Scripting element:-
+------------------------
+1)declaration :-to declare variable and method <% int i=0;%>
+2)scriptlets :-It contain the java code.
+3)expression tag:-It is used to retrive value <%=user%>
+4)comment tag:-used for comments.<!-- this is jsp comments--%>
+
+Action Tag:-
+-----------------
+1)<jsp :plugins>
+2)<jsp :include>
+3)<jsp :forward>
+4)<jsp :param>
+5)<jsp :useBean>
+6)<jsp :getProperty>
+7)<jsp :setProperty>
+
+
+Implicit object:-
+-----------------------
+1)out-- PrintWriter
+2)response-- HttpServletResponse
+3)request-- HttpServletRequest
+4)page-- this a jsp page scope
+5)config-- ServletConfig
+6)session-- HttpSession
+7)application-- ServletContext
+8)execption-- Exception
+9)pageContext - JspWriter
+----------------------------------------------
+
