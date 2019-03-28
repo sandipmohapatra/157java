@@ -1,0 +1,200 @@
+   <html>
+    <head>
+   <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+        out.println("Scripting tag");
+         %>
+        <h1>Welcome to jsp</h1><br>
+        <%
+        out.println("welcome to jsp page");
+	out.println("<br>");
+        out.println("welcome to jsp page");
+      %>
+     </body>
+     </html>
+
+--------------------------------------------------------------------------------------------------
+
+   <html>
+    <head>
+         <title>JSP Page</title>
+    </head>
+    <body>
+         <%
+        int a=10,b=20,sum;
+        sum=a+b;
+        out.println("the sum of two numbers is"+sum);
+        %>
+      <h1>Hello World!</h1>
+      </body>
+     </html>
+
+-------------------------------------------------------------------------------------------------
+
+
+<body>
+        <h1>Hello World!</h1>
+<!-- expression tag  -->
+        <%= 5+4 %>
+<!-- declarative -->
+        <%!int sum,a,b;%>  <!-- this is known as global declaration -->
+        <% a=10;b=20; sum=a+b;
+        out.println("the sum of numbers is"+sum);
+        %>
+     
+        <font color="red" size="8">
+            the sum of <%=a%> and <%=b%> is <%=sum%>
+        </font>                  
+    </body>
+
+
+--------------------------------------------------------------------------------------------------
+
+first.jsp
+-----------------
+ <body>
+        <h1>Hello World!</h1>
+        <form action="second.jsp">
+            username:<input type="text" name="user">
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>
+
+---------------------------------------------------------------
+second.jsp
+--------------------
+ <body>
+      <%!String user;%>
+      <%
+      user=request.getParameter("user");
+      out.println("the value of user is="+user);
+      %>
+      <br>
+      the username is=<%=user%>
+-----------------------------------------------------------------------
+
+
+// page  Directive
+<%@page language="java"%>
+<%@page buffer="16kb"%>
+<%@page buffer="16kb" autoFlush="false"%>
+<%@page session="true" %>
+<%@page import="java.util.*;"%>
+<%
+Date d=new Date();
+out.println(d);
+out.println(d.getMonth());
+%>
+
+
+
+
+
+-----------------------------
+first.html
+-----------------------------
+<body>
+        <form action="iii.jsp">
+            age=<input type="text" name="n1">
+            <input type="submit" value="submit">
+
+        </form>
+    </body>
+
+-------------------------------------------------
+iii.jsp
+<%@page errorPage="error.jsp"%>
+
+<%!int age;
+    %>
+    <%
+String a=request.getParameter("n1");
+    age=Integer.parseInt(a);
+    out.println("the age is"+age);
+  
+    %>
+-------------------------------------------------------
+error.jsp
+
+<%@page isErrorPage="true" %>
+<%
+
+out.println("enter only the number");
+out.println("<a href='hhh.html'>form</a>");
+
+%>
+
+-----------------------------------------------------------
+include tag:
+--------------------------------------------------------------------
+jjj.html
+
+<body>
+        <form action="kkk.jsp">
+            age:<input type="text" name="n1">
+            <input type="submit" value="submit">
+        </form>
+    </body>
+----------------------------------------------------------------------------------------
+kkk.jsp
+
+<%!String age;
+int age1;
+%>
+<%
+try{
+age=request.getParameter("n1");
+age1=Integer.parseInt(age);
+out.println("the age is "+age1);
+}
+catch(Exception e)
+        {
+    out.println("plz enter only numbers");
+    %>
+   <%@include file="jjj.html"%>
+   <%
+    }
+    %>
+-----------------------------------------------------------
+lll.jsp
+combobox value to generate using for loop
+
+ <h1>Hello World!</h1>
+        <select name="number">
+            <%
+            for(int i=0;i<100;i++)
+                {
+            %>
+            <option value="<%=i%>"><%=i%></option>
+            <%
+            }
+            %>
+        </select>
+    </body>
+
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
