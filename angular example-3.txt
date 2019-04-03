@@ -1,0 +1,59 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+    template:`
+    <p>Hello my name is {{name}}</p>
+    <p>Hello my email is {{email}}</p>
+    <p>Hello my address is {{address.street}}  {{address.loc}}  {{address.state}}  {{address.city}}</p>
+    <p><Button (click)="sayName()" >Say my Details... </Button> </p>
+    <p><Button (click)="Details()" >Details... </Button> </p>
+    <h3>My Hobbies are </h3>{{hobbies}}
+    <h3>My Daily Foods are </h3>
+    <ul>
+    <li *ngFor="let food of foods">
+    {{food}}
+    </li>
+    </ul>    `
+})
+export class AppComponent 
+ {
+   name:String;
+   email:String;
+   address:address;
+   hobbies:string[];
+   foods:string[];
+   constructor()
+   {
+    this.name = 'sandip kumar';
+    this.email='sandip@gmail.com';
+    this.address=
+    {
+      street:'MG Road',
+      loc:'Sivaji nagar',
+      state:'Karnataka',
+      city:'Bangalore'
+    }
+    this.hobbies=['music','cricket','football','movies','sports'];
+    this.foods=['rice & dal','Biryani','noodles','sweet','ice-cream'];
+       }
+   sayName()
+   {
+     console.log("my name is ",this.name);
+     console.log("my email is ",this.email);
+     console.log("my address is ",this.address);
+     
+   }
+   Details()
+   {
+  this.sayName() ;
+     }
+     
+  }
+  interface address
+     {
+      street:String;
+      loc:string;
+      state:string;
+      city:string; 
+     }
