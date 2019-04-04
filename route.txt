@@ -1,0 +1,87 @@
+---------------------------------
+app.component.ts
+---------------------------------
+import {Component} from '@angular/core';
+@Component ({
+    selector :'my-app',
+    template:` MENU <ul>
+    <li> <a [routerLink]="['/Product']">Product</a></li>
+    <li> <a [routerLink]="['/Inventory']">Inventory</a></li>
+    </ul><hr><hr>
+    <router-outlet></router-outlet> `
+})
+export class AppComponent
+{}
+    
+* <router-outlet></router-outlet>  :- is the placeholder to render the component based on which option the user chooses.
+-------------------------------------------------------------------------------------------------------------
+product.component.ts
+-------------------------------------------------------------------------------------------------------------
+import { Component } from '@angular/core';
+@Component ({
+selector: 'my-app',
+template: `<form>
+<table>
+<tr><td><label>Product ID:</label><td>
+<input type="text" name="pid" size=20 /><br /></tr>
+<tr><td><label>Product Name:</label><td>
+<input type="text" name="pname" size=20 /><br /></tr>
+<tr><td><label>Product Unit:</label><td>
+<input type="text" name="punit" size=20 /><br /></tr>
+<tr><td><label>Product Price:</label><td>
+<input type="text" name="pprice" size=20 /><br /></tr>
+<tr><td><td><input type="submit" value="submit" /><br /></tr>
+</table>
+</form>
+`
+,
+})
+export class Appproduct {
+}
+------------------------------------------------------------
+Inventory.component.ts
+----------------------------------------
+import { Component } from '@angular/core';
+@Component ({
+selector: 'my-app',
+template: `<form>
+<table>
+<tr><td><label>Inventory ID:</label><td>
+<input type="text" name="pid" size=20 /><br /></tr>
+<tr><td><label>Inventory Name:</label><td>
+<input type="text" name="pname" size=20 /><br /></tr>
+<tr><td><label>Inventory Unit:</label><td>
+<input type="text" name="punit" size=20 /><br /></tr>
+<tr><td><label>Inventory Price:</label><td>
+<input type="text" name="pprice" size=20 /><br /></tr>
+<tr><td><td><input type="submit" value="submit" /><br /></tr>
+</table>
+</form>` 
+
+})
+export class AppInventory {
+}
+----------------------------------------------------------------------------------
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }  from './app.component';
+import {FormsModule} from  '@angular/forms';
+
+import { Appproduct } from './product.component'
+import { AppInventory } from './Inventory.component'
+import { RouterModule, Routes } from '@angular/router'; 
+
+const appRoutes: Routes = [
+  { path: 'Product', component: Appproduct },
+  { path: 'Inventory', component: AppInventory },
+  ];
+
+
+@NgModule({
+  imports:      [ BrowserModule , RouterModule.forRoot(appRoutes)],
+  declarations: [ AppComponent ,Appproduct,AppInventory],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+-------------------------------------------------------------------------------------------------------------
