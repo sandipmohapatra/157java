@@ -1,0 +1,143 @@
+how to install node
+---------------------------------------
+https://nodejs.org
+
+how to install angular
+---------------------------------------------
+https://github.com/angular/quickstart
+download
+npm install
+ npm start
+automatically the browser opens :- http://localhost:3000
+----------------------------------------------------------------------------------
+
+
+
+
+
+to change port :-ng server --port 5000
+
+-------------------------------------------------------------
+1)Angular JS is an open source JavaScript framework to build web applications in HTML and JavaScript. 
+2)It was built by the developers at Google. 
+3)This framework was used to overcome obstacles encountered while working with Single Page applications. Also, testing was considered as a key aspect while building the framework. It was ensured that the framework could be easily tested.(Jasmine and Karma)
+
+Features of Angular JS
+------------------------------------------
+Components - The earlier version of Angular had a focus of Controllers but now has changed the focus to having components over controllers. Components help to build the applications into many modules. This helps in better maintaining the application over a period of time.
+
+TypeScript - The newer version of Angular is based on TypeScript. This is a superset of JavaScript and is maintained by Microsoft.
+
+Services - Services are a set of code that can be shared by different components of an application. 
+
+Angular 2 has better event-handling capabilities, powerful templates, and better support for mobile devices.
+
+Components of Angular 2
+--------------------------------------------
+Modules - This is used to break up the application into logical pieces of code. Each piece of code or module is designed to perform a single task.
+
+Component - This can be used to bring the modules together.
+
+Templates - This is used to define the views of an Angular JS application.
+
+Metadata - This can be used to add more data to an Angular JS class.
+
+Service - This is used to create components which can be shared across the entire application.
+------------------------------------------------------------------------------------------------------------------------------------------
+app.module.ts
+--------------------------
+The import statement is used to import functionality from the existing modules. 
+The first 3 statements are used to import the NgModule, BrowserModule and AppComponent modules into this module.
+
+The NgModule decorator is used to later on define the imports, declarations, and bootstrapping options.
+
+The BrowserModule is required by default for any web based angular application.
+
+The bootstrap option tells Angular which Component to bootstrap in the application.
+
+A module is made up of the following parts -
+
+Bootstrap array - This is used to tell Angular JS which components need to be loaded so that its functionality can be accessed in the application. Once you include the component in the bootstrap array, you need to declare them so that they can be used across other components in the Angular JS application.
+
+Export array - This is used to export components, directives, and pipes which can then be used in other modules.
+
+Import array - Just like the export array, the import array can be used to import the functionality from other Angular JS modules.
+-----------------------------
+Bindings
+----------------------
+If you’re familiar with Angular 1, your probably know about ng-model, which is the way to achieve two-way data binding in Angular 1. It turns out that ng-model also exists in Angular 2 with a slightly different syntax:
+
+<input type="text" [(ngModel)]="person.name" />
+Why those brackets and parentheses? Well, it seems weird at first but it does make a lot of sense once you know that brackets allow you to define a one-way data binding from your Javascript to your HTML, and parentheses define a one-way data binding from your HTML to your Javascript code.
+
+For instance, the following code means that the text input would get its value updated when your Javascript object person.name gets updated, but not the other way round as it’s a one-way data binding:
+
+<input type="text" [value]="person.name" />
+In the following example, we do the exact opposite as we use parentheses to trigger a function call when a specific event occurs, in that case a click on our text input. That’s the main use case for parentheses:
+
+<input type="text" (click)="doSomething()" />
+Here is a link to an example of how to use [(ng-model)] in Angular 2.
+
+Inputs and outputs
+We know that Angular 2 applications are basically a tree of components. How do those components share data between them? How do they communicate?
+
+Let’s assume we have a new Hello World component that would take a custom message as a parameter:
+
+<hello-world [message]="myMessage"></hello-world>
+Then our Hello World component would basically look like this, using the @Input() decorator to bind a class attribute to the value passed in the message input attribute:
+
+@Component({
+  selector: 'hello-world',
+  template: `
+    <div>
+      <h2>Hello {{message}}</h2>
+    </div>
+  `
+})
+export class Hello {
+  
+  @Input()
+  message : String;  
+}
+
+
+The full example for this can be seen here. That’s the easiest way to pass a value from one component to another, using HTML attributes bound to component class attributes.
+
+It’s also possible for a component to emit an event, using the @Output() decorator. The syntax of the emitter component looks like this. Here I just send an event whenever my internal DIV gets clicked on:
+
+@Component({
+  selector: 'hello-world',
+  template: `
+    <div (click)="handleClick()">
+      <h2>Hello {{message}}</h2>
+    </div>
+  `
+})
+export class Hello {
+  
+  @Input()
+  message : String;
+  
+  @Output()
+  onClick : EventEmitter = new EventEmitter();
+  
+  handleClick(){
+    this.onClick.emit("I got clicked pretty bad");
+  }
+}
+Any component using that Hello World component would then register a callback on my custom onClick event as follows:
+
+<hello-world [message]="myMessage" (onClick)="myCallback($event)"></hello-world>
+You can find the full example here. In that example, I actually pass an event object that is then retrieved by the parent component and rendered as a message.
+
+Dependency injection
+Angular has always been using dependency injection and pushes it one step further with dependency injection, which is as simple as adding parameters to the component constructor:
+
+constructor(private service : TrafficControllerService) {
+    
+  }
+Even better, using the private declaration in the above TypeScript code automatically makes service a class attribute of my component class.
+
+ -----------------------------------------------------------
+
+https://www.concretepage.com/angular-2/angular-2-two-way-data-binding-ngmodel-example#run
